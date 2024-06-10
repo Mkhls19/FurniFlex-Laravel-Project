@@ -1,108 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>FurniFlex</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-  <link href="{{ asset('style/assets/img/logospt1.png') }}" rel="icon">
-  <link href="{{ asset('style/assets/img/logospt1.png') }}" rel="furniflex">
-       <link href="https://fonts.gstatic.com" rel="preconnect">
- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  <link href="{{ asset('style/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('style/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ asset('style/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('style/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-  <link href="{{ asset('style/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-  <link href="{{ asset('style/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-  <link href="{{ asset('style/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
-  <link href="{{ asset('font/css/all.min.css') }}" rel="stylesheet">
-  <!-- Template Main CSS File -->
-  <link href="{{ asset('style/assets/css/style.css') }}" rel="stylesheet">
-  <script src="{{ asset('style/assets/js/main.js') }}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurniFlex-Produksi Mebel</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    
 </head>
 <body>
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="" class="logo d-flex align-items-center">
-        <img src="{{ asset('style/assets/img/logospt1.png') }}" alt="">
-        <span class="d-none d-lg-block">FurniFlex</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-        <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ asset('style/assets/img/admin.jpg') }}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block ps-2">{{ session('username') }}</span>
-          </a><!-- End Profile Iamge Icon -->  
-        </li><!-- End Profile Nav -->
-      </ul> 
-    </nav><!-- End Icons Navigation -->
-  </header><!-- End Header -->
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-    <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('dashboard') }}">
-          <i class="fa-solid fa-palette"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('BahanBaku') }}">
-          <i class="fa fa-cubes"></i>
-          <span>Bahan Material</span>
-        </a>
-      </li><!-- End Bahan Baku Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="">
-          <i class="fa-solid fa-cube"></i>
-          <span>Produksi</span>
-        </a>
-      </li><!-- End Produksi Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="">
-          <i class="fa-solid fa-truck"></i>
-          <span>Pengiriman</span>
-        </a>
-      </li><!-- End Pengiriman Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('login') }}">
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <span>Logout</span>
-        </a>
-      </li><!-- End Logout Page Nav -->
-    </ul>
-  </aside><!-- End Sidebar-->
-  <main id="main" class="main">
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-          <!-- Content Header (Page header) -->
-          <section class="content-header">
-              @yield('content')
-          </section>
-      </div>
-  </main><!-- End #main -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span> FurniFlex </span></strong> 2024
+    <nav>
+        <div class="wrapper">
+        <div class="logo-container">
+        <img src="./assets/image/logofrnflx2.png" alt="Logo Furniflex" width="30%" class="logo"/>
+            <input type="checkbox" id="click">
+            <label for="click" class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <div class="menu">
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#produk">Produk</a></li>
+                    <li><a href="admin.php">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <!-- untuk home -->
+        <section id="home">
+        <!-- <img src="assets/image/12.jpg"/> -->
+            <div class="kolom">
+                <p class="deskripsi">Mebel Berkualitas Untuk Rumah Anda</p>
+                <h2>Desain Kreatif, Kualitas Terbaik</h2>
+                <p>Dapatkan koleksi mebel terbaik dari FurniFlex.</p>
+                <p><a href="" class="tbl-pink">Pelajari Lebih Lanjut</a></p>
+            </div>
+        </section>
+
+        <div class="slides"> 
+            <div class="slide"> 
+                <img src="assets/image/kursi2.png" alt="Gambar 1"> 
+            </div> 
+            <div class="slide"> 
+                <img src="assets/image/meja2.png" alt="Gambar 2"> 
+            </div> 
+            <div class="slide"> 
+                <img src="assets/image/rak2.png" alt="Gambar 3"> 
+            </div> 
+            <div class="slide"> 
+                <img src="assets/image/meja3.png" alt="Gambar 4"> 
+            </div> 
+            <div class="slide"> 
+                <img src="assets/image/kursi3.png" alt="Gambar 5"> 
+            </div> 
+            <div class="navigation"> 
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a> 
+                <a class="next" onclick="plusSlides(1)">&#10095;</a> 
+            </div> 
+        </div> 
+    
+        <script> 
+            var slideIndex = 1; 
+            showSlides(slideIndex); 
+    
+            function plusSlides(n) { 
+                showSlides(slideIndex += n); 
+            } 
+    
+            function showSlides(n) { 
+                var i; 
+                var slides = document.getElementsByClassName("slide"); 
+                if (n > slides.length) { 
+                    slideIndex = 1; 
+                } 
+                if (n < 1) { 
+                    slideIndex = slides.length; 
+                } 
+                for (i = 0; i < slides.length; i++) { 
+                    slides[i].style.display = "none"; 
+                } 
+                slides[slideIndex - 1].style.display = "block"; 
+            } 
+        </script>
+
+        <!-- untuk Deskripsi_singkat -->
+        <section id="tentang">
+            <!-- <img src="assets/image/11.jpg"/> -->
+            <div class="kolom">
+                <p class="deskripsi">Deskripsi Singkat</p>
+                <h2>FurniFlex-Produksi Mebel</h2>
+                <p>FurniFlex adalah sebuah perusahaan produksi mebel yang berdedikasi untuk memberikan solusi furnitur yang berkualitas tinggi bagi rumah dan bisnis. Dengan fokus pada pembuatan berbagai jenis meja, kursi, lemari, dan produk furnitur lainnya, FurniFlex menonjolkan kualitas bahan dan desain yang inovatif. Setiap produk diproduksi dengan menggunakan teknologi terkini dan pengrajin yang ahli, menjadikan FurniFlex sebagai pilihan utama bagi mereka yang mengutamakan keindahan dan ketahanan dalam furnitur mereka</p>
+                <p>Komitmen FurniFlex terhadap keunggulan tidak hanya tercermin dalam produk-produknya, tetapi juga dalam pendekatan berkelanjutan terhadap produksi. Perusahaan ini berupaya untuk memanfaatkan bahan-bahan ramah lingkungan dan praktik produksi yang bertanggung jawab secara sosial. Dengan demikian, FurniFlex bukan hanya menjadi penyedia furnitur yang terpercaya, tetapi juga mitra yang peduli akan lingkungan dan masyarakat</p>
+                <p><a href="" class="tbl-biru">Pelajari Lebih Lanjut</a></p>
+            </div>
+        </section>
+
+        <!-- untuk Produk -->
+        <section id="produk">
+            <div class="tengah">
+                <div class="kolom">
+                    <p class="deskripsi">Beberapa Produk Furniture Kami</p>
+                    <h2>Furniture</h2>
+                    <p>Dengan fokus pada pembuatan berbagai jenis meja, kursi, lemari, dan produk furnitur lainnya, FurniFlex menonjolkan kualitas bahan dan desain yang inovatif.</p>
+                </div>
+
+                <div class="produk-list">
+                <div class="kartu-produk" id="produk1">
+                    <img src="assets/image/meja1.jpg"/>
+                    <p>Meja</p>
+                </div>
+                <div class="kartu-produk" id="produk2">
+                    <img src="assets/image/kursi1.jpg"/>
+                    <p>Kursi</p>
+                </div>
+                <div class="kartu-produk" id="produk3">
+                    <img src="assets/image/lemari1.jpg"/>
+                    <p>Lemari</p>
+                </div>
+                <div class="kartu-produk" id="produk4">
+                    <img src="assets/image/rak1.jpg"/>
+                    <p>Rak Sepatu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="copyright">
+        <div class="wrapper">
+            &copy; 2024. <b>FurniFlex</b> All Rights Reserved.
+        </div>
     </div>
-    <div class="credits">
-      Designed by <a href="">Muhlisin</a>
-    </div>
-  </footer><!-- End Footer -->
-  <script src="{{ asset('style/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
- <script src="{{ asset('style/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('style/assets/vendor/chart.js/chart.umd.js') }}"></script>
-  <script src="{{ asset('style/assets/vendor/echarts/echarts.min.js') }}"></script>
-  <script src="{{ asset('style/assets/vendor/quill/quill.js') }}"></script>
-  <script src="{{ asset('style/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
-  <script src="{{ asset('style/assets/vendor/tinymce/tinymce.min.js') }}"></script>
-  <script src="{{ asset('style/assets/vendor/php-email-form/validate.js') }}"></script>
-  <script src="{{ asset('style/assets/js/main.js') }}"></script>
+    
+    <script>
+        // Fungsi untuk menangani pesanan produk
+        function pesanProduk(namaProduk, gambarProduk) {
+            // Mengisi nilai pada form pemesanan dengan data produk yang dipilih
+            document.getElementById("gambar").src = gambarProduk;
+            document.getElementById("nama_produk").textContent = namaProduk;
+        }
+    </script>
 </body>
 </html>

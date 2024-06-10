@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\bahanmaterialController;
+use App\Http\Controllers\MaterialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +18,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/dashboardadmin', function () {
+    return view('dashboardadmin');
+});
+
+// Route Register 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+// Route Login 
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
 // Route bahanmaterial
-Route::get('/bahanmaterial', [bahanmaterialController::class, 'index'])->name('bahanmaterial');
+Route::get('/Material',[MaterialController::class,'index']);
+Route::get('/Material-Entry',[MaterialController::class,'create']);
+Route::post('/Material-proses',[MaterialController::class,'store']);
+Route::get('/Material-Edit/{id}',[MaterialController::class,'edit']);
+Route::post('/Material-Update/{id}',[MaterialController::class,'update']);
+Route::get('/Material-Delete/{id}',[MaterialController::class,'destroy']);
 
-Route::get('/bahanmaterial/addform', [bahanmaterialController::class, 'add'])->name('addbahanmaterial');
-
-Route::post('/bahanmaterial/addform', [bahanmaterialController::class, 'insertdata'])->name('insertbahanmaterial');
-    
-Route::get('/bahanmaterial/updateform/{id}', [bahanmaterialController::class, 'readdata'])->name('readbahanmaterial');
-
-Route::get('/bahanmaterial/allform/{id}', [bahanmaterialController::class, 'viewdata'])->name('viewbahanmaterial');
-    
-Route::post('/bahanmaterial/updateform/{id}', [bahanmaterialController::class, 'updatedata'])->name('updatebahanmaterial');
-    
-Route::get('/bahanmaterial/{id}', [bahanmaterialController::class, 'deletedata'])->name('deletebahanmaterial');
+//Mencetak Data Customer
+Route::get('/bahanmaterial-cetak',[MaterialController::class,'downloadpdf']);

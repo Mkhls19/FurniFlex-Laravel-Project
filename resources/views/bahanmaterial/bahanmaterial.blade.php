@@ -1,78 +1,110 @@
-@extends('Layouts.app') @section('content')
-{{-- Alert Success Add --}}
-    @if (session()->has('primary'))
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            {{ session('primary') }}
-        </div>
-    @endif
-{{-- Alert Success Update --}}
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-{{-- Alert Success Delete --}}
-    @if (session()->has('danger'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('danger') }}
-        </div>
-    @endif
-<div class="pagetitle">
-    <h1>Data Bahan Material</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title> Material</title>
+    <link rel="stylesheet" href="{{asset('style/css/style_material.css')}}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <img src="{{asset('style/assets/image/logofrnflx2.png')}}" alt="Logo Furniflex" class="logo"/>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="../admin.php">
+            <i class='bx bx-palette' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../material/material.php" class="active">
+            <i class='bx bx-cube-alt' ></i>
+            <span class="links_name">Material</span>
+          </a>
+        </li>
+        <li>
+          <a href="../produksi/produksi.php">
+            <i class='bx bx-archive' ></i>
+            <span class="links_name">Produksi</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pengiriman/pengiriman.php">
+            <i class='bx bx-package' ></i>
+            <span class="links_name">Pengiriman</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="../logout.php">
+           <i class='bx bx-log-out-circle'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <div class="home-section">
     <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Bahan Material</li>
-    </ol>
-    </nav>
-</div><!-- End Page Title -->
-<div class="container-fluid">
-    <div class="card">
-      <div class="card-header">
-        <div class="buttons">
-        <a href="{{ route('addbahanmaterial') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
       </div>
+      <div class="profile-details">
+        <img src="{{asset('style/assets/image/Adminlogo.png')}}" alt="Logo Administrator">
+        <span class="admin_name"></span>
+      </div>
+    </nav>
+  <div class="home-content">
+    <h2>Data Bahan Material</h2>
+    <button class= "btn btn-tambah">
+      <i class="bx bx-plus"></i><a href="Material-Entry"> Tambah Data </a>
+		</button>
+        <button type="button" class="btn-tambah">
+        <a href="bahanmaterial-cetak" class="btn-tambah">Cetak Data</a>
+        </button>
+		<table class="table-data">
+    <thead>
+          <tr>
+            <th style="width: 25%">ID Material</th>
+            <th style="width: 25%">Kategori Bahan</th>
+            <th style="width: 25%">Harga</th>
+            <th style="width: 25%">Jumlah</th>
+            <th style="width: 25%">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+        @foreach($dtMaterial as $item)
+                        <tr>
+                            <td>{{$item->Id_Material}}</td>
+                            <td>{{$item->Kategori}}</td>
+                            <td>{{$item->Harga}}</td>
+                            <td>{{$item->Jumlah}}</td>
+                            <td>
+                                <button type="button" class="btn-edit">
+                                    <a href="{{ url('Material-Edit', $item->id) }}" class="btn-edit">Edit</a>
+                                </button>
+                                <button type="button" class="btn-delete">
+                                    <a href="{{ url('Material-Delete', $item->id) }}" class="btn-delete">Delete</a>
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+        </tbody>
+      </table>
     </div>
-    <div class="row">
-        <div class="col-12">
-                <div class="card-body table-responsive">
-                    <table class='table datatable table-striped table-bordered' id="table1">
-                        <thead>
-                            <tr>
-                                <th style="text-align: center;">No</th>
-                                <th style="width: 20%">Kategori</th>
-                                <th style="width: 20%">Jumlah</th>
-                                <th style="width: 20%">Harga</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (count($data) > 0)
-                            @foreach ($data as $item=>$row)
-                            <tr>
-                                    <td style="text-align: center;">{{ $item+1 }}</td>
-                                    <td>{{ $row->kategori}}</td>
-                                    <td>{{ $row->jumlah }}</td>
-                                    <td>Rp. {{ number_format($row->harga, 0, ',','.') }}</td>
-                                    <td>
-                                        <a href="{{ route('viewbahanmaterial', $row->id) }}" class="btn icon btn-primary" data-bs-target="{{ $row->id }}"><i class="fas fa-eye"></i>  </a>
-                                        <a href="{{ route('readbahanmaterial', $row->id) }}" class="btn icon btn-success"><i class="fas fa-edit"></i>  </a>
-                                        <a href="{{ route('deletebahanmaterial', $row->id) }}" class="btn icon btn-danger" onclick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="fas fa-trash-alt"></i></i>  </a>
-                                    </td>
-                            </tr>
-                            @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="5"><p class="text text-center">No results found.</p></td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-        </div>
-    </div>
-    <!-- /.row -->
-</div>
-@endsection
+  </div>
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function() {
+      sidebar.classList.toggle("active");
+      if(sidebar.classList.contains("active")){
+        sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+      } else {
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
+  </script>
+</body>
+</html>
